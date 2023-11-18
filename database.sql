@@ -5,28 +5,25 @@ CREATE TABLE Categories (
     name VARCHAR(255) NOT NULL,
     description TEXT
 );
-CREATE TABLE Robots (
+create TABLE Robots (
     robot_id INT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     category_id INT,
-    size VARCHAR(50),
+    width decimal(4,2),
+    height decimal(4,2),
+    length decimal(4,2),
     weight DECIMAL(10,2),
     speed DECIMAL(5,2),
-    capacity DECIMAL(10,2),
     description TEXT,
     FOREIGN KEY (category_id) REFERENCES Categories(category_id)
 );
-CREATE TABLE Components (
+create TABLE Components (
     component_id INT PRIMARY KEY,
     robot_id INT,
-    name VARCHAR(255) NOT NULL,
-    description TEXT,
-    FOREIGN KEY (robot_id) REFERENCES Robots(robot_id)
-);
-CREATE TABLE SpecificationTechnique (
-    spec_id INT PRIMARY KEY,
-    robot_id INT,
-    spec_name VARCHAR(255) NOT NULL,
-    spec_value VARCHAR(255) NOT NULL,
+    core text,
+    software text,
+    power text ,
+    sensors text,
+    actuators text ,
     FOREIGN KEY (robot_id) REFERENCES Robots(robot_id)
 );
