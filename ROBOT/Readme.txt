@@ -20,4 +20,4 @@ Stay connected with us on social media and subscribe to our newsletter for updat
 
 Once again, thank you for being a part of RoboGears . We hope you enjoy your time exploring the amazing universe of robots with us!
 
-Happy exploring!
+Happy exploring ! 
