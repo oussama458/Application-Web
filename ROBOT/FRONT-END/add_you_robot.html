@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>RobotGears- add a robot </title>
+  <title>RobotGears- Add a Robot</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/R.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -33,6 +33,17 @@
     .logo h1 {
       text-align: center;
     }
+
+    #robot-section,
+    #specifications {
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    #specifications-form {
+      max-width: 600px; /* Adjust the maximum width as needed */
+      margin: 0 auto;
+    }
   </style>
   <!-- End Custom Style -->
 
@@ -50,13 +61,11 @@
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
-
       <div class="logo">
         <h1><a href="index.html">RobotGears</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
-
     </div>
   </header><!-- End Header -->
 
@@ -65,48 +74,118 @@
     <!-- ======= Breadcrumbs Section ======= -->
     <section class="breadcrumbs">
       <div class="container">
-
         <div class="d-flex justify-content-between align-items-center">
           <h2>Add a robot</h2>
           <ol>
             <li><a href="index.html">Home</a></li>
           </ol>
         </div>
-
       </div>
     </section><!-- End Breadcrumbs Section -->
 
     <section class="inner-page">
       <div class="container">
-        <p>
-          
-        </p>
+        <p></p>
       </div>
 
+      <!-- Enter Robot Details Section -->
+      <!-- Enter Robot Details Section -->
+<section id="robot-section">
+  <h3>Enter Robot Details</h3>
+  <form action="#" method="post" enctype="multipart/form-data">
+    <div class="row">
+      <!-- Adjusted the class from col-lg-12 to col-lg-6 for half-width -->
+      <div class="col-lg-6">
+        <div class="mb-3">
+          <label for="robotName" class="form-label">Robot Name:</label>
+          <input type="text" class="form-control" id="robotName" name="robotName" required>
+        </div>
+      </div>
+      <!-- Adjusted the class from col-lg-12 to col-lg-6 for half-width -->
+      <div class="col-lg-6">
+        <div class="mb-3">
+          <label for="robotPicture" class="form-label">Upload Robot Picture:</label>
+          <input type="file" class="form-control" id="robotPicture" name="robotPicture" accept="image/*" required>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</section>
+
+
+      <!-- Specifications Section -->
       <section id="specifications">
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
               <h2>Specifications</h2>
               <p>Please provide the specifications for your project:</p>
-              <!-- Add a form for user specifications -->
+              <!-- Updated form for user specifications with an additional case for description -->
               <form id="specifications-form">
                 <div id="specification-fields">
+                  <!-- Specification 1: Width -->
                   <div class="form-group">
-                    <label for="specification1">Specification 1:</label>
-                    <input type="text" class="form-control" name="specification[]" placeholder="Enter specification 1">
+                    <label for="specification1">Width:</label>
+                    <input type="text" class="form-control" name="specification[]" placeholder="Enter width">
+                  </div>
+                  <!-- Specification 2: Height -->
+                  <div class="form-group">
+                    <label for="specification2">Height:</label>
+                    <input type="text" class="form-control" name="specification[]" placeholder="Enter height">
+                  </div>
+                  <!-- Specification 3: Length -->
+                  <div class="form-group">
+                    <label for="specification3">Length:</label>
+                    <input type="text" class="form-control" name="specification[]" placeholder="Enter length">
+                  </div>
+                  <!-- Specification 4: Weight -->
+                  <div class="form-group">
+                    <label for="specification4">Weight:</label>
+                    <input type="text" class="form-control" name="specification[]" placeholder="Enter weight">
+                  </div>
+                  <!-- Specification 5: Speed -->
+                  <div class="form-group">
+                    <label for="specification5">Speed:</label>
+                    <input type="text" class="form-control" name="specification[]" placeholder="Enter speed">
+                  </div>
+                  <!-- Specification 6: Core -->
+                  <div class="form-group">
+                    <label for="specification6">Core:</label>
+                    <input type="text" class="form-control" name="specification[]" placeholder="Enter core details">
+                  </div>
+                  <!-- Specification 7: Software -->
+                  <div class="form-group">
+                    <label for="specification7">Software:</label>
+                    <input type="text" class="form-control" name="specification[]" placeholder="Enter software details">
+                  </div>
+                  <!-- Specification 8: Power -->
+                  <div class="form-group">
+                    <label for="specification8">Power:</label>
+                    <input type="text" class="form-control" name="specification[]" placeholder="Enter power details">
+                  </div>
+                  <!-- Specification 9: Sensors -->
+                  <div class="form-group">
+                    <label for="specification9">Sensors:</label>
+                    <input type="text" class="form-control" name="specification[]" placeholder="Enter sensor details">
+                  </div>
+                  <!-- Specification 10: Actuators -->
+                  <div class="form-group">
+                    <label for="specification10">Actuators:</label>
+                    <input type="text" class="form-control" name="specification[]" placeholder="Enter actuator details">
+                  </div>
+                  <!-- Specification 11: Description -->
+                  <div class="form-group">
+                    <label for="specification11">Description:</label>
+                    <textarea class="form-control" name="specification[]" placeholder="Enter project description"></textarea>
                   </div>
                 </div>
-                <button type="button" class="btn btn-primary" onclick="addSpecificationField()">Add Specification</button>
                 <button type="submit" class="btn btn-primary">Submit Specifications</button>
               </form>
             </div>
           </div>
         </div>
       </section>
-
-    </section>
-
 
     </section>
 
@@ -126,20 +205,20 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
-  function addSpecificationField() {
-    var container = document.getElementById('specification-fields');
+    function addSpecificationField() {
+      var container = document.getElementById('specification-fields');
 
-    // Check if the number of specifications is less than 10
-    if (container.children.length < 10) {
-      var newField = document.createElement('div');
-      newField.innerHTML = '<div class="form-group"><label for="specification">Specification ' + (container.children.length + 1) + ':</label><input type="text" class="form-control" name="specification[]" placeholder="Enter specification ' + (container.children.length + 1) + '"></div>';
-      container.appendChild(newField);
-    } else {
-      // Display a message if the limit is reached
-      alert('You cannot add more than 10 specifications.');
+      // Check if the number of specifications is less than 10
+      if (container.children.length < 10) {
+        var newField = document.createElement('div');
+        newField.innerHTML = '<div class="form-group"><label for="specification">Specification ' + (container.children.length + 1) + ':</label><input type="text" class="form-control" name="specification[]" placeholder="Enter specification ' + (container.children.length + 1) + '"></div>';
+        container.appendChild(newField);
+      } else {
+        // Display a message if the limit is reached
+        alert('You cannot add more than 10 specifications.');
+      }
     }
-  }
-</script>
+  </script>
 
 </body>
 
