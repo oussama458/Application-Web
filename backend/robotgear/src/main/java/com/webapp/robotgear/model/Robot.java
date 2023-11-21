@@ -1,5 +1,7 @@
 package com.webapp.robotgear.model;
 
+/*import java.util.List;*/
+
 import jakarta.persistence.*;
 
 @Entity
@@ -18,27 +20,46 @@ public class Robot {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @Column(name = "width", precision = 4, scale = 2)
+    @Column(name = "width")
     private Double width;
 
-    @Column(name = "height", precision = 4, scale = 2)
+    @Column(name = "height")
     private Double height;
 
-    @Column(name = "length", precision = 4, scale = 2)
+    @Column(name = "length")
     private Double length;
 
-    @Column(name = "weight", precision = 10, scale = 2)
+    @Column(name = "weight")
     private Double weight;
 
-    @Column(name = "speed", precision = 5, scale = 2)
+    @Column(name = "speed")
     private Double speed;
 
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
-
+    
+    @Column(name = "image_path")
+    private String imagePath;
     // Getters and Setters
 
-    public Long getId() {
+
+
+
+	public Robot() {
+		
+	}
+	public Robot(String name, Double width, Double height, Double length, Double weight, Double speed, String description, String imagePath) {
+        this.name = name;
+        this.width = width;
+        this.height = height;
+        this.length = length;
+        this.weight = weight;
+        this.speed = speed;
+        this.description = description;
+        this.imagePath = imagePath;
+    }
+
+	public Long getId() {
         return id;
     }
 
@@ -109,4 +130,14 @@ public class Robot {
     public void setDescription(String description) {
         this.description = description;
     }
+    public String getimagePath() {
+    	return imagePath;
+    }
+    
+    
+    public void setimagePath(String imagePath) {
+    	this.imagePath = imagePath;
+    }
+    
+ 
 }
