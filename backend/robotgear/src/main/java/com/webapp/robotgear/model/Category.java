@@ -8,31 +8,29 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "category_id")
-    private int id;
+    @Column(name = "category_id", updatable = false, nullable = false)
+    private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, length = 45)
     private String name;
 
-    @Column(name = "description", columnDefinition = "TEXT")
-    private String description;
 
     // Getters and Setters
     public Category() {
     	
     }
 
-    public Category(int id, String name, String description) {
+    public Category(Long id, String name, String description) {
     	this.id = id;
     	this.name = name;
-    	this.description = description;
+
     }
 
-	public int getId() {
+	public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -44,11 +42,5 @@ public class Category {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }

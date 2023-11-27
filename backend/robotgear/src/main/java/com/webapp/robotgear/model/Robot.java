@@ -10,10 +10,10 @@ public class Robot {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "robot_id")
+    @Column(name = "robot_id",updatable = false, nullable = false)
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, length = 64)
     private String name;
 
     @ManyToOne
@@ -40,24 +40,31 @@ public class Robot {
     
     @Column(name = "image_path")
     private String imagePath;
+    
+
+    @Column(name = "core", columnDefinition = "TEXT")
+    private String core;
+
+    @Column(name = "software", columnDefinition = "TEXT")
+    private String software;
+
+    @Column(name = "power", columnDefinition = "TEXT")
+    private String power;
+
+    @Column(name = "sensors", columnDefinition = "TEXT")
+    private String sensors;
+
+    @Column(name = "actuators", columnDefinition = "TEXT")
+    private String actuators;
     // Getters and Setters
 
 
 
 
 	public Robot() {
+		super();
 		
 	}
-	public Robot(String name, Double width, Double height, Double length, Double weight, Double speed, String description, String imagePath) {
-        this.name = name;
-        this.width = width;
-        this.height = height;
-        this.length = length;
-        this.weight = weight;
-        this.speed = speed;
-        this.description = description;
-        this.imagePath = imagePath;
-    }
 
 	public Long getId() {
         return id;
@@ -137,6 +144,51 @@ public class Robot {
     
     public void setimagePath(String imagePath) {
     	this.imagePath = imagePath;
+    }
+    public String getCore() {
+        return core;
+    }
+
+    public void setCore(String core) {
+        this.core = core;
+    }
+
+    public String getSoftware() {
+        return software;
+    }
+
+    public void setSoftware(String software) {
+        this.software = software;
+    }
+
+    public String getPower() {
+        return power;
+    }
+
+    public void setPower(String power) {
+        this.power = power;
+    }
+
+    public String getSensors() {
+        return sensors;
+    }
+
+    public void setSensors(String sensors) {
+        this.sensors = sensors;
+    }
+
+    public String getActuators() {
+        return actuators;
+    }
+
+    public void setActuators(String actuators) {
+        this.actuators = actuators;
+    }
+    
+    @Transient
+    public String getRobotImagePath() {
+    	if (imagePath == null || id ==null) return null;
+    	return "/assets/Robot-Images/" + id + "/" + imagePath;
     }
     
  

@@ -10,15 +10,4 @@ import java.util.Optional;
 @Service
 public class CategoryService {
 
-	 static {
-	        //Initialize Data
-	        Category categoryOne = new Category(1, "Medical", "Contains All Medical Robots");
-
-	        Category categoryTwo = new Category(2, "Spring MVC", "10 Examples");
-
-	        Category categoryThree = new Category(3, "Spring Boot", "6K Students");
-
-	        Category categoryFour = new Category(1, "Maven", "Most popular maven course on internet!");
-	        }
-
-}
+	}

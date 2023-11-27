@@ -3,12 +3,14 @@ package com.webapp.robotgear.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.webapp.robotgear.model.Category;
+
 import com.webapp.robotgear.model.Robot;
-import com.webapp.robotgear.repository.CategoryRepository;
 import com.webapp.robotgear.repository.RobotRepository;
 
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,9 +20,7 @@ public class RobotService {
     @Autowired
     private RobotRepository robotRepository;
 
-    @Autowired
-  private CategoryRepository categoryRepository;
-
+    
 
     @Transactional(readOnly = true)
     public List<Robot> getAllRobots() {
@@ -36,47 +36,46 @@ public class RobotService {
     public List<Robot> getRobotByName(String robotName) {
         return robotRepository.findByNameContainingIgnoreCase(robotName);
         }
+    
+    
     @Transactional
-    public Robot updateRobot(Long robotId, String name, Long categoryId) {
-        Robot existingRobot = robotRepository.findById(robotId)
-                .orElseThrow(() -> new RuntimeException("Robot not found"));
+    public void saveRobot(MultipartFile file,
+    		String name,
+    		Double width,
+    		Double height,
+    		Double length,
+    		Double weight,
+    		Double speed,
+    		String description,
+    		String imagePath,
+    		String core,
+    		String software,
+    		String power,
+    		String sensors,
+			String actuators) throws NoSuchAlgorithmException, IOException {
+    	Robot r = new Robot();
+    	r.setName(name);
+    	r.setWidth(width);
+    	r.setHeight(height);
+    	r.setLength(length);
+    	r.setWeight(weight);
+    	r.setSpeed(speed);
+    	r.setDescription(description);
+    	r.setCore(core);
+    	r.setSoftware(software);
+    	r.setPower(power);
+    	r.setSensors(sensors);
+    	r.setActuators(actuators);
+    	
 
-        Category category = categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new RuntimeException("Category not found"));
-
-        existingRobot.setName(name);
-        existingRobot.setCategory(category);
-
-        // Additional business logic...
-
-        return robotRepository.save(existingRobot);
+    	robotRepository.save(r);
+    	
+      
     }
-   /* @Transactional
-    public void deleteRobot(Long robotId) {
-        Robot robot = robotRepository.findById(robotId)
-                .orElseThrow(() -> new RuntimeException("Robot not found"));
-
-        robotRepository.delete(robot);
+    @Transactional
+    public void save(Robot robot) {
+    	robotRepository.save(robot);
     }
-    public List<Robot> getRobotsByCategory(String categoryName) {
-        return robotRepository.findByCategoryNameIgnoreCaseOrderByName(categoryName);
-    }
-    @Transactional(readOnly = true)
-    public List<Robot> searchRobots(String keyword) {
-        return robotRepository.findByNameIgnoreCaseContaining(keyword, keyword);
-    }*/
 
-    /*@Transactional(readOnly = true)
-    public List<Robot> filterRobotsByCategory(String categoryName) {
-        return robotRepository.findByCategoryNameIgnoreCase(categoryName);
-    }*/
-
-    /*public List<RobotThumbnailModel> getAllRobotThumbnails() {
-        // Implement logic to retrieve thumbnail information from the repository
-        return null;
-    }*/
-    public Robot saveRobot(Robot robot) {
-        return robotRepository.save(robot);
-    }
 }
 
