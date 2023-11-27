@@ -53,7 +53,7 @@ public class UploadController {
 	
 	@GetMapping({"/robot-details/{id}"})
 	public String getRobotDetails(@PathVariable Long id, Model model) {
-		robotService.getRobotById(id).ifPresent(o -> model.addAttribute("room", o));
+		robotService.getRobotById(id).ifPresent(o -> model.addAttribute("robot", o));
 		return "details";
 		
 	}
