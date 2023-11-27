@@ -25,6 +25,7 @@ import com.webapp.robotgear.service.RobotService;
 import com.webapp.robotgear.model.Robot;
 import com.webapp.robotgear.repository.RobotRepository;
 
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -46,15 +47,18 @@ public class UploadController {
 		    model.addAttribute("robots", robotService.getAllRobots());
 		return "index";
 	}
-	@GetMapping({"/robot-form"})
+	@GetMapping({"robot-details/robot-form","/robot-form"})
 	public String robotform() {
 		return "robot-form";
 	}
 	
 	@GetMapping({"/robot-details/{id}"})
-	public String getRobotDetails(@PathVariable Long id, Model model) {
-		robotService.getRobotById(id).ifPresent(o -> model.addAttribute("robot", o));
-		return "details";
+	public ModelAndView getRobotDetails(@PathVariable Long id, Model model) {
+		ModelAndView modelAndView = new ModelAndView("details");
+		robotService.getRobotById(id).ifPresent(o -> modelAndView.addObject("robot", o));
+         
+		return modelAndView;
+
 		
 	}
 	

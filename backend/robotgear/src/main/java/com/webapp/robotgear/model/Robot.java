@@ -1,6 +1,6 @@
 package com.webapp.robotgear.model;
 
-/*import java.util.List;*/
+
 
 import jakarta.persistence.*;
 
@@ -65,7 +65,6 @@ public class Robot {
 		super();
 		
 	}
-
 	public Long getId() {
         return id;
     }

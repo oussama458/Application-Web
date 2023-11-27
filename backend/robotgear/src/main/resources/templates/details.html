@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeLeaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -44,7 +44,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1><a href="index.html">RoboGears</a></h1>
+        <h1><a href="@{/home}">RoboGears</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -56,7 +56,7 @@
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="add_you_robot.html">Add Robot</a></li>
+          <li><a class="getstarted scrollto" href="@{/robot-form}">Add Robot</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -165,15 +165,26 @@
             </div>
             <div class="ruled-md stack measures padding-bottom-r">
                 <dt class="text-label-s">Width</dt>
-                <dd th:text="${robot.width}" class="text-headline-m">width</dd>
-                <dt class="text-label-s">Height</dt>
-                <dd th:text="${robot.height}" class="text-headline-m">height</dd>
-                <dt class="text-label-s">Length</dt>
-                <dd th:text="${robot.lenght}" class="text-headline-m">lenght</dd>
-                <dt class="text-label-s">Weight</dt>
-                <dd th:text="${robot.weight}" class="text-headline-m">37 kg </dd>
-                <dt class="text-label-s">Speed</dt>
-                <dd th:text="${robot.speed}" class="text-headline-m">speed/h </dd>
+                <dd  class="text-headline-m">
+                  <p th:text="${robot.width}">width</p>
+                </dd>
+                
+                <dt class="text-label-s">Height (cm)</dt>
+                <dd class="text-headline-m">
+                  <p th:text="${robot.height}">height (cm)</p></p>
+                </dd>
+                <dt class="text-label-s">Length (cm)</dt>
+                <dd class="text-headline-m">
+                  <p th:text="${robot.Length}">lenght (cm)</p>
+                </dd>
+                <dt class="text-label-s">Weight (Kg)</dt>
+                <dd class="text-headline-m">
+                  <p th:text="${robot.weight}">weight</p>
+                </dd>
+                <dt class="text-label-s">Speed (Km/h)</dt>
+                <dd class="text-headline-m">
+                  <p th:text="${robot.speed}">speed</p>
+                </dd>
             </div>
         </div>
         <div class="switcher ruled-md">
